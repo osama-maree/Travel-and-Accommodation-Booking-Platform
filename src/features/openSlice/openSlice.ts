@@ -7,7 +7,7 @@ export interface initialActionType{
   payload:initialStateType
 }
 const initialState: initialStateType = {
-open:false
+open:true
 };
 
 export const openSlice = createSlice({
