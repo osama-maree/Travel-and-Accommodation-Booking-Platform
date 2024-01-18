@@ -18,12 +18,11 @@ const LoginForm: React.FC = () => {
   const { formik, isPending } = useLogin();
   const location = useLocation();
   const classes = useStyles();
-
   return (
     <>
       {userType ? (
         <Navigate
-          to={userType === "Admin" ? "admin" : "/"}
+          to={userType === "Admin" ? "/admin" : "/"}
           replace
           state={{ from: location.pathname }}
         />

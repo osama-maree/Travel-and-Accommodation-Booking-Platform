@@ -1,4 +1,3 @@
-
 import { INITIAL_FORM_STATE } from "../constant";
 import { useFormik } from "formik";
 import { validationSchema } from "../schema";
@@ -10,11 +9,18 @@ import { useDispatch } from "react-redux";
 import { loginSuccess } from "../../../features/authSlice/authSlice";
 const useLogin = () => {
   const { showSnackbar } = useSnackbar();
-const dispatch=useDispatch()
-  const { mutate: loginMutate, isPending,isSuccess } = useMutation({
+  const dispatch = useDispatch();
+  const {
+    mutate: loginMutate,
+    isPending,
+    isSuccess,
+  } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-       dispatch(loginSuccess({token:data.authentication,userType:data.userType}))
+      dispatch(
+        loginSuccess({ token: data.authentication, userType: data.userType })
+      );
+      localStorage.setItem("access-token", data.authentication);
       showSnackbar({ severity: "success", message: "success login" });
     },
     onError: (error: AxiosBaseError) => {
@@ -37,7 +43,7 @@ const dispatch=useDispatch()
   return {
     formik,
     isPending,
-    isSuccess
+    isSuccess,
   };
 };
 
