@@ -14,8 +14,10 @@ import { handleToggle } from "../../features/openSlice/openSlice";
 import { useDispatch } from "react-redux";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { logOut } from "../../features/authSlice/authSlice";
+import useStyles from "./styles";
 const AppBarMUI: React.FC = () => {
   const { open } = useAppSelector((state) => state.open);
+  const classes = useStyles();
   const dispatch = useDispatch();
   const handleToggleDrawer = () => {
     dispatch(handleToggle({ open: !open }));
@@ -55,7 +57,7 @@ const AppBarMUI: React.FC = () => {
                 alt="logo"
               />
             </ImageListItem>
-            <ImageListItem sx={{ maxHeight: "70px", maxWidth: "300px" }}>
+            <ImageListItem className={classes.imgItem}>
               <img
                 src="assets/logo-text.png"
                 style={{

@@ -1,4 +1,3 @@
-
 import { drawerWidth } from "../AppBar/constant";
 import { styled } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
