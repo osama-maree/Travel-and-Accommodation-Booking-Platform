@@ -18,7 +18,7 @@
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) and npm installed.
-- A backend server with JWT authentication.
+
 
 ### Installation
 
