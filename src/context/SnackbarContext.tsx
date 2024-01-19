@@ -1,10 +1,8 @@
 import { ReactElement } from "react";
 import { createContext, useReducer, useCallback, ReactNode } from "react";
 import { AlertColor } from "@mui/material/Alert";
-
 import { SnackbarOrigin } from "@mui/material/Snackbar";
 import { ShowSnackbarPayload } from "../types/snackbar";
-
 interface State {
   open: boolean;
   severity: AlertColor;
