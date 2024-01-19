@@ -1,6 +1,6 @@
-# Project Name
+# Travel and Accommodation Booking Platform
 
-Description of your project.
+
 
 ## Table of Contents
 
@@ -25,4 +25,4 @@ Description of your project.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/osama-maree/booking-training-project.git
