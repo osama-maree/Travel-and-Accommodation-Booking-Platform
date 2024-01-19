@@ -3,7 +3,6 @@ import { dataTypes } from "../pages/User/types";
 
 const useDebounce = (value:dataTypes | null, delay = 500) => {
   const [debouncedValue, setDebouncedValue] = useState<dataTypes | null>(value);
-
   useEffect(() => {
     const id = setTimeout(() => {
       setDebouncedValue(value);
