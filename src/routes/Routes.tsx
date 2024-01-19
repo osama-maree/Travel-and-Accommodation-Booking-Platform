@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectRoute";
 import { UserRole } from "../constant/auth";
 import BlockUI from "../container/BlockUI";
+const Order = lazy(() => import("../pages/User/order"));
 const AdminHome = lazy(() => import("../pages/Admin"));
 const Login = lazy(() => import("../pages/Login"));
 const UserHome = lazy(() => import("../pages/User"));
@@ -30,6 +31,7 @@ const AppRoutes: FC = () => {
             <Route path="deals" element={<FeaturedDeal />} />
             <Route path="hightlights" element={<TrendingHighLight />} />
             <Route path="hotel/:id" element={<Hotel />} />
+            <Route path="order" element={<Order />} />
           </Route>
           <Route element={<ProtectedRoute allowedRoles={[Admin]} />}>
             <Route path="admin" element={<AdminHome />} />

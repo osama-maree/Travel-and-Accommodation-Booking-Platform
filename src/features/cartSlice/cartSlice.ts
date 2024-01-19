@@ -1,15 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { propsType } from "../../pages/User/component/MainSection/types";
+import { roomType } from "../../pages/User/component/Hotel/component/AvailbleRooms/types";
 
 interface initialStateType {
-  hotels: propsType[];
+  rooms: roomType[];
 }
 interface actionStateType {
-  hotel: propsType;
+  room: roomType;
 }
 
+interface actionRemove {
+  roomId: number;
+}
 const initialState: initialStateType = {
-  hotels: [],
+  rooms: [],
 };
 
 export const cartSlice = createSlice({
@@ -17,13 +20,24 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<actionStateType>) => {
-      const found = state.hotels.find(
-        (hotel) => hotel.hotelId === action.payload.hotel.hotelId
+      const isFound = state.rooms?.find(
+        (room) => room.roomId === action.payload.room.roomId
       );
-      if (!found) state.hotels.push(action.payload.hotel);
+      if (isFound) {
+        state.rooms = state.rooms.map((room) =>
+          room.roomId === isFound.roomId
+            ? { ...room, quantity: isFound.quantity }
+            : { ...room }
+        );
+      } else state.rooms.push(action.payload.room);
+    },
+    removeFromCart: (state, action: PayloadAction<actionRemove>) => {
+      state.rooms = state.rooms.filter(
+        (room) => room.roomId !== action.payload.roomId
+      );
     },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart ,removeFromCart} = cartSlice.actions;
 export default cartSlice.reducer;

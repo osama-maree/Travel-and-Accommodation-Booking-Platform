@@ -1,7 +1,7 @@
 import {
   IconButton,
   ImageListItem,
-  Stack,
+  Box,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -15,8 +15,13 @@ import { useDispatch } from "react-redux";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { logOut } from "../../features/authSlice/authSlice";
 import useStyles from "./styles";
+import { UserRole } from "../../constant/auth";
+import { useNavigate } from "react-router";
+
 const AppBarMUI: React.FC = () => {
   const { open } = useAppSelector((state) => state.open);
+  const { userType } = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
   const classes = useStyles();
   const dispatch = useDispatch();
   const handleToggleDrawer = () => {
@@ -24,6 +29,9 @@ const AppBarMUI: React.FC = () => {
   };
   const handleLogout = () => {
     dispatch(logOut());
+  };
+  const handleShopping = () => {
+    navigate("/order");
   };
   return (
     <AppBar position="fixed">
@@ -40,26 +48,24 @@ const AppBarMUI: React.FC = () => {
           <MenuIcon />
         </IconButton>
         <Typography margin={"0px auto"} variant="h6" noWrap component="div">
-          <Stack
-            direction="row"
+          <Box
             sx={{
-              height: (theme) => theme.mixins.toolbar.minHeight,
-              alignItems: "baseline",
-              maxWidth: "275px",
               gap: 1,
-              mb: 0.5,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <ImageListItem>
               <img
-                src="assets/logo.png"
-                style={{ height: 54, width: 54, borderRadius: "50%" }}
+                src="/assets/logo.png"
+                style={{ height: 56, width: 56, borderRadius: "50%" }}
                 alt="logo"
               />
             </ImageListItem>
             <ImageListItem className={classes.imgItem}>
               <img
-                src="assets/logo-text.png"
+                src="/assets/logo-text.png"
                 style={{
                   filter: `brightness(0) invert(1)`,
                   height: "100% !important",
@@ -68,12 +74,13 @@ const AppBarMUI: React.FC = () => {
                 alt="logo"
               />
             </ImageListItem>
-          </Stack>
+          </Box>
         </Typography>
-
-        <IconButton sx={{ color: "white" }}>
-          <ShoppingCartIcon />
-        </IconButton>
+        {userType === UserRole.User && (
+          <IconButton sx={{ color: "white" }} onClick={handleShopping}>
+            <ShoppingCartIcon />
+          </IconButton>
+        )}
         <IconButton sx={{ color: "white" }} onClick={handleLogout}>
           <ExitToAppIcon />
         </IconButton>
