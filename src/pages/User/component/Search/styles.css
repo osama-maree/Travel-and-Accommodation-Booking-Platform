@@ -1,0 +1,15 @@
+.boxInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c6c6c6;
+  border-radius: 4px;
+}
+.searchInput {
+  border: none;
+  outline: none;
+  width: 40px;
+  padding-left: 9px;
+  text-align: center;
+}
+ 
