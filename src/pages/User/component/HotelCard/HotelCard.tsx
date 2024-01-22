@@ -15,7 +15,7 @@ interface hotelProps {
 const HotelList: React.FC<hotelProps> = ({ searchTerm }) => {
   const navigate = useNavigate();
   const { searchData } = useSearch();
-  const { data } = useSWR(searchTerm, searchRes);
+  const { data } = useSWR("getQuerySeaarch",()=> searchRes(searchTerm));
   const [res, setRes] = useState<propsType[] | undefined>(data);
 
   const handleBooking = useCallback(

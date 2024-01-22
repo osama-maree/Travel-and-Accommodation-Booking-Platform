@@ -8,7 +8,7 @@ import Filter from "../Filter";
 
 const MainSection: React.FC = () => {
   const { data } = useSearch();
-  const debouncedSearchValue: dataTypes | null = useDebounce(data, 1000);
+  const debouncedSearchValue: dataTypes | null = useDebounce<dataTypes>(data, 1000);
   return (
     <Grid container spacing={2} marginTop={1}>
       <Grid item xs={12} md={3}>

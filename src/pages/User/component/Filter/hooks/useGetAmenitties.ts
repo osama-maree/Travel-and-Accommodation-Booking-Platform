@@ -3,7 +3,7 @@ import { getAmenities } from "../api";
 
 const useGetAmenities = () => {
   const { data, isLoading } = useQuery({
-    queryKey: ["featuredDeals"],
+    queryKey: ["featuredAmenities"],
     queryFn: getAmenities,
   });
   return { data, isLoading };
