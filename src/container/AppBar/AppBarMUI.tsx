@@ -16,7 +16,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { logOut } from "../../features/authSlice/authSlice";
 import useStyles from "./styles";
 import { UserRole } from "../../constant/auth";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const AppBarMUI: React.FC = () => {
   const { open } = useAppSelector((state) => state.open);
@@ -56,7 +56,7 @@ const AppBarMUI: React.FC = () => {
               alignItems: "center",
             }}
           >
-            <ImageListItem>
+            <ImageListItem sx={{ display: { xs: "none", md: "block" } }}>
               <img
                 src="/assets/logo.png"
                 style={{ height: 56, width: 56, borderRadius: "50%" }}

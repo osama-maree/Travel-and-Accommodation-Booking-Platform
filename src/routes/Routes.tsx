@@ -5,6 +5,8 @@ import { UserRole } from "../constant/auth";
 import BlockUI from "../container/BlockUI";
 const Order = lazy(() => import("../pages/User/order"));
 const AdminHome = lazy(() => import("../pages/Admin"));
+const Hotels = lazy(() => import("../pages/Admin/component/Hotels"));
+const Rooms = lazy(() => import("../pages/Admin/component/Rooms"));
 const Login = lazy(() => import("../pages/Login"));
 const UserHome = lazy(() => import("../pages/User"));
 const RecentlyHotel = lazy(
@@ -34,7 +36,9 @@ const AppRoutes: FC = () => {
             <Route path="order" element={<Order />} />
           </Route>
           <Route element={<ProtectedRoute allowedRoles={[Admin]} />}>
-            <Route path="admin" element={<AdminHome />} />
+            <Route path="manageCities" element={<AdminHome />} />
+            <Route path="manageHotels" element={<Hotels />} />
+            <Route path="manageRooms" element={<Rooms />} />
           </Route>
         </Route>
       </Routes>
