@@ -1,5 +1,4 @@
 import { AxiosError } from "axios";
-
 export interface BaseResponse {
   status: number;
   statusText: string;
