@@ -1,7 +1,5 @@
 import React, { FC, PropsWithChildren } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-
-
 interface MUIThemeProviderProps {}
 const theme= createTheme({})
 const MUIThemeProvider: FC<PropsWithChildren<MUIThemeProviderProps>> = ({

@@ -10,6 +10,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./queryCient";
 import MUIThemeProvider from "./styling/MUIThemeProvider";
 import { persistor, store } from "./store";
+import { AdminProvider } from "./pages/Admin/context/SearchContext";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -21,9 +22,11 @@ root.render(
           <MUIThemeProvider>
             <QueryClientProvider client={queryClient}>
               <SnackbarProvider>
-                <Routes>
-                  <Route path="/*" element={<App />} />
-                </Routes>
+                <AdminProvider>
+                  <Routes>
+                    <Route path="/*" element={<App />} />
+                  </Routes>
+                </AdminProvider>
               </SnackbarProvider>
             </QueryClientProvider>
           </MUIThemeProvider>
