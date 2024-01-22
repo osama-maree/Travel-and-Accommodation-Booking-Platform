@@ -40,6 +40,7 @@
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.1",
     "react-scripts": "^5.0.1",
+    "react-wavify": "^1.8.2",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.1.8",
@@ -74,7 +75,6 @@
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
-    "@types/leaflet": "^1.9.8",
-    "@babel/plugin-proposal-private-property-in-object": "^1.0.6"
+    "@types/leaflet": "^1.9.8"
   }
 }

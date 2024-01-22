@@ -21,6 +21,13 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  grid: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+    height: "100vh",
+  },
 }));
 
 export default useStyles;

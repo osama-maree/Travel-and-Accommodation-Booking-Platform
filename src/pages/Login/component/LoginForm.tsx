@@ -32,7 +32,6 @@ const LoginForm: React.FC = () => {
           <Avatar className={classes.avatar}>
             <LockOpenIcon />
           </Avatar>
-
           <form onSubmit={formik.handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -73,7 +72,7 @@ const LoginForm: React.FC = () => {
                   helperText={formik.touched.password && formik.errors.password}
                 />
               </Grid>
-              <Grid item xs={12} marginBottom={2}>
+              <Grid item xs={12} marginBottom={3}>
                 <Button
                   type="submit"
                   disabled={isPending}
