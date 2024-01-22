@@ -13,6 +13,7 @@ import useStyles from "../styles";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../store";
 import { initialStateType } from "../../../features/authSlice/authSlice";
+import { UserRole } from "../../../constant/auth";
 const LoginForm: React.FC = () => {
   const { userType } = useAppSelector<initialStateType>((state) => state.auth);
   const { formik, isPending } = useLogin();
@@ -22,7 +23,7 @@ const LoginForm: React.FC = () => {
     <>
       {userType ? (
         <Navigate
-          to={userType === "Admin" ? "/admin" : "/"}
+          to={userType === UserRole.Admin ? "/manageCities" : "/"}
           replace
           state={{ from: location.pathname }}
         />
