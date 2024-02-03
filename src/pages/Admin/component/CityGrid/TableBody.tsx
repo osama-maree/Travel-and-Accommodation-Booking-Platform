@@ -20,7 +20,7 @@ const TableBody: React.FC<bodyProps> = ({ searchTerm }) => {
     data,
     isLoading,
     mutate: mutateSWR,
-  } = useSWR("cities", () => searchCity(searchTerm));
+  } = useSWR(searchTerm,searchCity);
   const { mutate } = useDeleteCity();
   const handleDelete = useCallback(
     (id: number) => {
@@ -43,7 +43,7 @@ const TableBody: React.FC<bodyProps> = ({ searchTerm }) => {
           </TableCell>
           <TableCell
             align="center"
-            sx={{ display: { xs: "none", md: "block" } }}
+            sx={{ display: { xs: "none", md: "table-cell" } }}
           >
             {row.description}
           </TableCell>

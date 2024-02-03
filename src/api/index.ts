@@ -7,7 +7,7 @@ const defaultAxiosSettings: AxiosRequestConfig = {
 };
 const axiosInstance = axios.create({
   baseURL:
-    "https://app-hotel-reservation-webapi-uae-dev-001.azurewebsites.net/api",
+process.env.REACT_APP_API_URL,
   ...defaultAxiosSettings,
 });
 export default axiosInstance;

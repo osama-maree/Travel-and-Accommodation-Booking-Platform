@@ -77,7 +77,7 @@ const RoomCard: React.FC<roomTypeProps> = ({
               disabled={quantity === 0}
               onClick={() => handleQuantityDec(roomId)}
             >
-              <RemoveCircleOutline color="warning" />
+              <RemoveCircleOutline color="info" />
             </IconButton>
             <Typography variant="body1" className={classes.typo}>
               {quantity}
@@ -93,8 +93,9 @@ const RoomCard: React.FC<roomTypeProps> = ({
           variant="contained"
           fullWidth
           onClick={() => handleAddToCart(roomDetails)}
+          disabled={quantity === 0}
         >
-          Add to Card
+          {quantity === 0 ? "Please enter a #days" : "Add to Cart"}
         </Button>
       </CardActions>
     </Card>

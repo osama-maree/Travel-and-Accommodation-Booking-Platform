@@ -25,7 +25,7 @@ export default function DenseTable() {
             <TableCell>Name</TableCell>
             <TableCell
               align="center"
-              sx={{ display: { xs: "none", md: "block" } }}
+              sx={{ display: { xs: "none", md: "table-cell" } }}
             >
               Description
             </TableCell>

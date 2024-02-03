@@ -36,8 +36,11 @@ export const cartSlice = createSlice({
         (room) => room.roomId !== action.payload.roomId
       );
     },
+    removeCart: (state) => {
+      state.rooms = [];
+    },
   },
 });
 
-export const { addToCart ,removeFromCart} = cartSlice.actions;
+export const { addToCart, removeFromCart,removeCart } = cartSlice.actions;
 export default cartSlice.reducer;

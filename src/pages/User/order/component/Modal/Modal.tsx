@@ -4,7 +4,16 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
-import { Button, Divider, TextField } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  Divider,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 
 import useBooking from "./hook/useBooking";
 
@@ -28,7 +37,7 @@ const TransitionsModal: React.FC<modalProps> = ({ onClose, isOpen, price }) => {
   const { formik, isPending, isSuccess } = useBooking();
   React.useEffect(() => {
     if (isSuccess) onClose();
-  }, [isSuccess,onClose]);
+  }, [isSuccess, onClose]);
   return (
     <>
       <Modal
@@ -59,22 +68,29 @@ const TransitionsModal: React.FC<modalProps> = ({ onClose, isOpen, price }) => {
 
             <form onSubmit={formik.handleSubmit}>
               <div style={{ margin: "1rem 0px" }}>
-                <TextField
-                  id="paymentMethod"
-                  name="paymentMethod"
-                  label="Payment Method"
-                  variant="outlined"
-                  onChange={formik.handleChange}
-                  value={formik.values.paymentMethod}
-                  error={
-                    formik.touched.paymentMethod &&
-                    Boolean(formik.errors.paymentMethod)
-                  }
-                  helperText={
-                    formik.touched.paymentMethod && formik.errors.paymentMethod
-                  }
-                  fullWidth
-                />
+                <FormControl fullWidth sx={{ mt: 2 }}>
+                  <InputLabel id="demo-simple-select-helper-label">
+                    Select City
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    name="paymentMethod"
+                    label="Payment Method"
+                    value={formik.values.paymentMethod}
+                    onChange={formik.handleChange}
+                    error={
+                      formik.touched.paymentMethod &&
+                      Boolean(formik.errors.paymentMethod)
+                    }
+                  >
+                    {["Cash", "Credit Card"].map((method) => (
+                      <MenuItem value={method} key={method}>
+                        {method}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </div>
 
               <div>
@@ -104,7 +120,11 @@ const TransitionsModal: React.FC<modalProps> = ({ onClose, isOpen, price }) => {
                 color="primary"
                 disabled={isPending}
               >
-                Book
+                {isPending ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : (
+                  "Book"
+                )}
               </Button>
             </form>
           </Box>

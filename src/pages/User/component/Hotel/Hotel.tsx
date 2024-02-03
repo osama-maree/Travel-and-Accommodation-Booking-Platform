@@ -8,6 +8,7 @@ import Location from "./component/Location";
 import Details from "./component/Details";
 import PictureGallery from "./component/PictureGallery";
 import AvailbleRooms from "./component/AvailbleRooms";
+
 const MyLayout: React.FC = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetHotel(id);

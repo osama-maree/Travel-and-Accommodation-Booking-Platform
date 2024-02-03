@@ -21,7 +21,7 @@ const PictrueGallery: React.FC<pictureProps> = ({ id }) => {
           rowHeight={302}
         >
           {data?.map((item, indx) =>
-            indx === 0 ? <></> : <CardItem key={item.id} url={item.url} />
+            indx === 0 ? null: <CardItem key={indx} url={item.url} />
           )}
         </ImageList>
       ) : null}

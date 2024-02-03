@@ -10,28 +10,32 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./queryCient";
 import MUIThemeProvider from "./styling/MUIThemeProvider";
 import { persistor, store } from "./store";
-import { AdminProvider } from "./pages/Admin/context/SearchContext";
+import { AdminProvider } from "./pages/Admin/context/AdminContext";
+import Loader from "./container/Loader";
+import ErrorBoundry from "./ErrorBoundry";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Router>
-      <Provider store={store}>
-        <PersistGate loading={"loading"} persistor={persistor}>
-          <MUIThemeProvider>
-            <QueryClientProvider client={queryClient}>
-              <SnackbarProvider>
-                <AdminProvider>
-                  <Routes>
-                    <Route path="/*" element={<App />} />
-                  </Routes>
-                </AdminProvider>
-              </SnackbarProvider>
-            </QueryClientProvider>
-          </MUIThemeProvider>
-        </PersistGate>
-      </Provider>
-    </Router>
+    <MUIThemeProvider>
+      <ErrorBoundry>
+        <Router>
+          <Provider store={store}>
+            <PersistGate loading={<Loader />} persistor={persistor}>
+              <QueryClientProvider client={queryClient}>
+                <SnackbarProvider>
+                  <AdminProvider>
+                    <Routes>
+                      <Route path="/*" element={<App />} />
+                    </Routes>
+                  </AdminProvider>
+                </SnackbarProvider>
+              </QueryClientProvider>
+            </PersistGate>
+          </Provider>
+        </Router>
+      </ErrorBoundry>
+    </MUIThemeProvider>
   </React.StrictMode>
 );

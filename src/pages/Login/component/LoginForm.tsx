@@ -6,6 +6,7 @@ import {
   Container,
   Grid,
   Avatar,
+  CircularProgress,
 } from "@mui/material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import useLogin from "../hook/useLogin";
@@ -80,7 +81,11 @@ const LoginForm: React.FC = () => {
                   color="primary"
                   fullWidth
                 >
-                  Login
+                  {isPending ? (
+                    <CircularProgress size={24} color="inherit" />
+                  ) : (
+                    "Login"
+                  )}
                 </Button>
               </Grid>
             </Grid>

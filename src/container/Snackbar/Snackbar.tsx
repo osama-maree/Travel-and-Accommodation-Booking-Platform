@@ -21,27 +21,29 @@ const Snackbar: FC<SnackbarProps> = () => {
     icon,
   } = state;
   return (
-    <MuiSnackbar
-      open={open}
-      autoHideDuration={autoHideDuration}
-      // @ts-ignore
-      onClose={hideSnackbar}
-      anchorOrigin={anchorOrigin}
-      TransitionComponent={Slide}
-    >
-      <Alert
-        icon={icon}
-        variant={variant}
+
+      <MuiSnackbar
+        open={open}
+        autoHideDuration={autoHideDuration}
         // @ts-ignore
         onClose={hideSnackbar}
-        severity={severity}
-        sx={{ width: "100%" }}
-        action={action}
+        anchorOrigin={anchorOrigin}
+        TransitionComponent={Slide}
       >
-        {title && <AlertTitle>{title}</AlertTitle>}
-        {message}
-      </Alert>
-    </MuiSnackbar>
+        <Alert
+          icon={icon}
+          variant={variant}
+          // @ts-ignore
+          onClose={hideSnackbar}
+          severity={severity}
+          sx={{ width: "100%" }}
+          action={action}
+        >
+          {title && <AlertTitle>{title}</AlertTitle>}
+          {message}
+        </Alert>
+      </MuiSnackbar>
+
   );
 };
 

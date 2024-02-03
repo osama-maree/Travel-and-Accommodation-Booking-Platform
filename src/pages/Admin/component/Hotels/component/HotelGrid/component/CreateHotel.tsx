@@ -10,7 +10,7 @@ interface modalProps {
   open: ModalType;
 }
 const CreateHotel: React.FC<modalProps> = ({ handleClose, open }) => {
-  const { data } = useSWR(searchTerm, searchCity);
+  const { data } = useSWR("cities", () => searchCity(searchTerm));
   const { formik, isPending } = useCreateHotel();
   return (
     <>

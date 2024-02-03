@@ -8,6 +8,7 @@ import useSnackbar from "../../../../../../hooks/useSnackbar";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../../../../features/cartSlice/cartSlice";
 import useStyles from "./styles";
+
 interface roomsProps {
   id: string | undefined;
 }
@@ -46,13 +47,6 @@ const AvailbleRooms: React.FC<roomsProps> = ({ id }) => {
   };
   const handleAddToCart = useCallback(
     (room: roomType) => {
-      if (room?.quantity === 0) {
-        showSnackbar({
-          severity: "warning",
-          message: "Please enter a quantity",
-        });
-        return;
-      }
       dispatch(addToCart({ room }));
       showSnackbar({
         severity: "success",

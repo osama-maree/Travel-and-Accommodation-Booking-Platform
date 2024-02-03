@@ -24,7 +24,7 @@ const TableBody: React.FC<bodyProps> = ({ searchTerm, handleOpen }) => {
     data,
     isLoading,
     mutate: mutateSWR,
-  } = useSWR("getHotel", () => searchHotel(searchTerm));
+  } = useSWR("hotels", () => searchHotel(searchTerm));
   const { mutate } = useDeleteHotel();
   const handleDelete = useCallback(
     (id: number) => {
@@ -46,7 +46,7 @@ const TableBody: React.FC<bodyProps> = ({ searchTerm, handleOpen }) => {
           </TableCell>
           <TableCell
             align="center"
-            sx={{ display: { xs: "none", md: "block" } }}
+            sx={{ display: { xs: "none", md: "table-cell" } }}
           >
             {row.description}
           </TableCell>

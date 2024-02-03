@@ -4,8 +4,11 @@ import { validationSchema } from "../schema";
 import { useMutation } from "@tanstack/react-query";
 import { booking } from "../api";
 import useSnackbar from "../../../../../../hooks/useSnackbar";
+import { useDispatch } from "react-redux";
+import { removeCart } from "../../../../../../features/cartSlice/cartSlice";
 const useBooking = () => {
   const { showSnackbar } = useSnackbar();
+  const dispatch = useDispatch();
   const {
     mutate: bookingMutate,
     isPending,
@@ -13,12 +16,10 @@ const useBooking = () => {
   } = useMutation({
     mutationFn: booking,
     onSuccess: (data) => {
-      console.log(data)
+      dispatch(removeCart());
       showSnackbar({ severity: "success", message: "Booking Success" });
     },
     onError: (error) => {
-      console.log(error)
-      console.log("Sss")
       showSnackbar({
         severity: "error",
         message: "Error Booking",

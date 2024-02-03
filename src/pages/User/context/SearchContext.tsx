@@ -1,12 +1,15 @@
 import { createContext, FC, ReactNode, useState } from "react";
 import { dataTypes, filter } from "../types";
 import { extractDate, extractTomorowDate } from "../../../utilties/extractDate";
+import { roomType } from "../component/Hotel/component/AvailbleRooms/types";
 
 interface contextValueType {
   data: dataTypes | null;
   setData: React.Dispatch<React.SetStateAction<dataTypes | null>>;
   searchData: filter | null;
   setSearchData: React.Dispatch<React.SetStateAction<filter | null>>;
+  rooms: roomType[]|undefined;
+  setRooms: React.Dispatch<React.SetStateAction<roomType[] | undefined>>;
 }
 export const SearchContext = createContext<contextValueType | null>(null);
 
@@ -29,10 +32,10 @@ export const SearchProvider: FC<SearchProviderProps> = ({ children }) => {
     amenities: "",
     roomType: "Luxury",
   });
-
+  const [rooms, setRooms] = useState<roomType[] >();
   return (
     <SearchContext.Provider
-      value={{ data, setData, searchData, setSearchData }}
+      value={{ data, setData, searchData, setSearchData, rooms, setRooms }}
     >
       {children}
     </SearchContext.Provider>

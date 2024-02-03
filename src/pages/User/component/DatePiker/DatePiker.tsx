@@ -24,12 +24,13 @@ const ResponsiveDateRangePickers: React.FC<propsTypes> = ({
   };
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DateRangePicker
-        defaultValue={[dayjs(data?.checkInDate), dayjs(data?.checkOutDate)]}
-        onChange={handleDateChange}
-      />
-    </LocalizationProvider>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DateRangePicker
+          defaultValue={[dayjs(data?.checkInDate), dayjs(data?.checkOutDate)]}
+          onChange={handleDateChange}
+        />
+      </LocalizationProvider>
+
   );
 };
 export default ResponsiveDateRangePickers;
