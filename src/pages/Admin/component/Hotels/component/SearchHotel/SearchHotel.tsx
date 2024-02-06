@@ -1,7 +1,7 @@
 import { Paper, Grid, TextField, IconButton, Tooltip } from "@mui/material";
 import React from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import useSearch from "../../../../context/useSearch";
+import useSearch from "../../../../context/useAdmin";
 import CreateHotel from "../HotelGrid/component/CreateHotel";
 import { types } from "../../../../types";
 const SearchHotel = () => {
@@ -17,7 +17,7 @@ const SearchHotel = () => {
   return (
     <Paper sx={{ padding: 1 }}>
       <Grid container columnSpacing={1}>
-        <Grid item xs={12} md={5} sx={{ mb: { xs:1, md: 0 } }}>
+        <Grid item xs={12} md={5} sx={{ mb: { xs: 1, md: 0 } }}>
           <TextField
             label="Hotel Name"
             onChange={onChange}

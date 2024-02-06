@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TableBody from "./component/TableBody";
 import useDebounce from "../../../../../../hooks/useDebounse";
-import useSearch from "../../../../context/useSearch";
+import useSearch from "../../../../context/useAdmin";
 import { ModalType, Search, types } from "../../../../types";
 import UpdateHotel from "./component/UpdateHotel";
 import { hotel } from "./api/types";

@@ -18,9 +18,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <MUIThemeProvider>
-      <ErrorBoundry>
-        <Router>
+    <ErrorBoundry>
+      <Router>
+        <MUIThemeProvider>
           <Provider store={store}>
             <PersistGate loading={<Loader />} persistor={persistor}>
               <QueryClientProvider client={queryClient}>
@@ -34,8 +34,8 @@ root.render(
               </QueryClientProvider>
             </PersistGate>
           </Provider>
-        </Router>
-      </ErrorBoundry>
-    </MUIThemeProvider>
+        </MUIThemeProvider>
+      </Router>
+    </ErrorBoundry>
   </React.StrictMode>
 );

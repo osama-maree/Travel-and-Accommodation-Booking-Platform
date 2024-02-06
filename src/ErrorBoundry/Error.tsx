@@ -3,15 +3,11 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import React, { FC } from "react";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-
 import useStyles from "./styles";
 import { UnexpectedErrorProps } from "./types";
-
 const UnexpectedError: FC<UnexpectedErrorProps> = (props) => {
   const classes = useStyles();
-
   const { resetErrorBoundary } = props;
-
   if (process.env.REACT_APP_PRODUCTION)
     return (
       <Stack gap={2} className={`${classes.root} ${classes.productionError}`}>

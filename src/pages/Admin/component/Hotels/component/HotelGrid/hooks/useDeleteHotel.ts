@@ -12,6 +12,7 @@ const useDeleteHotel = () => {
       showSnackbar({ severity: "success", message: "success delete hotel" });
     },
     onError: (error: AxiosBaseError) => {
+      console.log(error)
       showSnackbar({
         severity: "error",
         message: "Error Delete hotel",

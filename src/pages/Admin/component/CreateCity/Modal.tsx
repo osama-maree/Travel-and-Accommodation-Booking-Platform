@@ -26,7 +26,6 @@ const TransitionsModal: React.FC<modalProps> = ({ handleClose, open }) => {
   const { formik, isPending } = useCreateCity();
 
   return (
-    <>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -101,7 +100,6 @@ const TransitionsModal: React.FC<modalProps> = ({ handleClose, open }) => {
           </Box>
         </Fade>
       </Modal>
-    </>
   );
 };
 export default TransitionsModal;

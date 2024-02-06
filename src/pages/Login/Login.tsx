@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import animationData from "../../lotties/login.json";
 const Login = () => {
   const classes = useStyles();
+  
   return (
     <Box className={classes.login}>
       <Grid container>

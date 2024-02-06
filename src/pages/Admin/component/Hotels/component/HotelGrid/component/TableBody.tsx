@@ -5,38 +5,38 @@ import {
   IconButton,
   Rating,
 } from "@mui/material";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import useSWR from "swr";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Search } from "../../../../../types";
 import { searchHotel } from "../api";
-import Loader from "../../../../../../../container/Loader";
 import useDeleteHotel from "../hooks/useDeleteHotel";
 import { Edit } from "@mui/icons-material";
-import { hotelResponse } from "../api/types";
+import { hotel } from "../api/types";
+import useAdmin from "../../../../../context/useAdmin";
 
 interface bodyProps {
   searchTerm: Search | null;
-  handleOpen: (row: hotelResponse) => void;
+  handleOpen: (row: hotel) => void;
 }
 const TableBody: React.FC<bodyProps> = ({ searchTerm, handleOpen }) => {
-  const {
-    data,
-    isLoading,
-    mutate: mutateSWR,
-  } = useSWR("hotels", () => searchHotel(searchTerm));
+  const { data } = useSWR("hotels", () => searchHotel(searchTerm));
+  const { hotels, setHotels } = useAdmin();
   const { mutate } = useDeleteHotel();
   const handleDelete = useCallback(
     (id: number) => {
       mutate(id);
-      mutateSWR();
     },
-    [mutate, mutateSWR]
+    [mutate]
   );
-  if (isLoading) return <Loader />;
+  useEffect(() => {
+    if (data) {
+      setHotels(data);
+    }
+  }, [data, setHotels]);
   return (
     <Body>
-      {data?.map((row) => (
+      {hotels?.map((row) => (
         <TableRow
           key={row.id}
           sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

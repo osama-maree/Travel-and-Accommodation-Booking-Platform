@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectRoute";
 import { UserRole } from "../constant/auth";
 import BlockUI from "../container/BlockUI";
+const PageNotFound=lazy(()=>import("../pages/PageNotFound"));
 const Order = lazy(() => import("../pages/User/order"));
 const AdminHome = lazy(() => import("../pages/Admin"));
 const Hotels = lazy(() => import("../pages/Admin/component/Hotels"));
@@ -40,6 +41,7 @@ const AppRoutes: FC = () => {
             <Route path="manageHotels" element={<Hotels />} />
             <Route path="manageRooms" element={<Rooms />} />
           </Route>
+          <Route path="*" element={<PageNotFound/>}/>
         </Route>
       </Routes>
     </Suspense>

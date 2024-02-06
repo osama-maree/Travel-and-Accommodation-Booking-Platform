@@ -5,5 +5,5 @@ export const INITIAL_FORM_STATE = {
   starRating: 0,
   latitude: 0,
   longitude: 0,
-  cityId:0,
+  cityId:2,
 };

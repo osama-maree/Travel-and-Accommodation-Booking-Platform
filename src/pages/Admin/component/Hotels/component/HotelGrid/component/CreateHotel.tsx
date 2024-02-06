@@ -1,9 +1,10 @@
 import React from "react";
-import { ModalType, Search } from "../../../../../types";
+import { ModalType, Search, types } from "../../../../../types";
 import useSWR from "swr";
 import { searchCity } from "../../../../CityGrid/api";
 import useCreateHotel from "./hook/useCreateHotel";
 import TransitionsModal from "../../CreateHotel/Modal";
+
 const searchTerm: Search = { name: "", searchQuery: "" };
 interface modalProps {
   handleClose: () => void;
@@ -18,7 +19,7 @@ const CreateHotel: React.FC<modalProps> = ({ handleClose, open }) => {
         data={data}
         isPending={isPending}
         formik={formik}
-        type={"create"}
+        type={types.CREATE}
         open={open}
         handleClose={handleClose}
       />

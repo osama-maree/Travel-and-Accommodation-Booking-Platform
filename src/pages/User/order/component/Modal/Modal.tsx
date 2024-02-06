@@ -67,8 +67,7 @@ const TransitionsModal: React.FC<modalProps> = ({ onClose, isOpen, price }) => {
             <Divider />
 
             <form onSubmit={formik.handleSubmit}>
-              <div style={{ margin: "1rem 0px" }}>
-                <FormControl fullWidth sx={{ mt: 2 }}>
+                <FormControl fullWidth sx={{ margin: "1rem 0px" }}>
                   <InputLabel id="demo-simple-select-helper-label">
                     Select City
                   </InputLabel>
@@ -91,7 +90,7 @@ const TransitionsModal: React.FC<modalProps> = ({ onClose, isOpen, price }) => {
                     ))}
                   </Select>
                 </FormControl>
-              </div>
+       
 
               <div>
                 <TextField

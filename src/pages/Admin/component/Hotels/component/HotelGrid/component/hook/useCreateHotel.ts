@@ -5,11 +5,14 @@ import useSnackbar from "../../../../../../../../hooks/useSnackbar";
 import { createHotel } from "../api";
 import { RequestBody } from "../../../CreateHotel/types";
 import { INITIAL_FORM_STATE } from "../../../CreateHotel/constant";
+import useAdmin from "../../../../../../context/useAdmin";
 const useCreateHotel = () => {
   const { showSnackbar } = useSnackbar();
+  const { setHotels, hotels } = useAdmin();
   const { mutate, isPending } = useMutation({
     mutationFn: createHotel,
     onSuccess: (data) => {
+      setHotels([...hotels, data.data]);
       showSnackbar({
         severity: "success",
         message: "Create New Hotel Success",

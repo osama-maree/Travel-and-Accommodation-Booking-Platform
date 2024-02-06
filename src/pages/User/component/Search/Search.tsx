@@ -28,9 +28,9 @@ const Search = () => {
       </Grid>
       <Grid item xs={12} md={6}>
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Typography>
+          <Box>
             <DatePiker data={data} setData={setData} />
-          </Typography>
+          </Box>
           <Box className="boxInput">
             <input
               type="number"

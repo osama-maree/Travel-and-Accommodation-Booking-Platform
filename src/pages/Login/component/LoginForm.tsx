@@ -22,7 +22,7 @@ const LoginForm: React.FC = () => {
   const classes = useStyles();
   return (
     <>
-      {userType ? (
+      {userType ?(
         <Navigate
           to={userType === UserRole.Admin ? "/manageCities" : "/"}
           replace

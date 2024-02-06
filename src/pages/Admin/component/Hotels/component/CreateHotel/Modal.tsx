@@ -45,7 +45,6 @@ const TransitionsModal: React.FC<modalProps> = ({
   data,
 }) => {
   return (
-    <>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -212,7 +211,6 @@ const TransitionsModal: React.FC<modalProps> = ({
           </Box>
         </Fade>
       </Modal>
-    </>
   );
 };
 export default TransitionsModal;

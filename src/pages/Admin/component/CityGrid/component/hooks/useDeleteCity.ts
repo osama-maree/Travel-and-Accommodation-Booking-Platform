@@ -5,20 +5,19 @@ import { AxiosBaseError } from "../../../../../../types";
 
 const useDeleteCity = () => {
   const { showSnackbar } = useSnackbar();
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending,isSuccess } = useMutation({
     mutationFn: DeleteCity,
     onSuccess: (data: any) => {
       showSnackbar({ severity: "success", message: "success delete city" });
     },
     onError: (error: AxiosBaseError) => {
-      console.log(error)
       showSnackbar({
         severity: "error",
         message: "Error Delete City",
       });
     },
   });
-  return { mutate, isPending };
+  return { mutate, isPending,isSuccess };
 };
 
 export default useDeleteCity;

@@ -15,46 +15,52 @@ import { UserRole } from "../../constant/auth";
 import { adminData, userData } from "./Data";
 const AppLayout: React.FC = () => {
   const { open } = useAppSelector((state) => state.open);
-  const { userType } = useAppSelector((state) => state.auth);
+  const { userType, token } = useAppSelector((state) => state.auth);
   const { Admin } = UserRole;
   const data = userType === Admin ? adminData : userData;
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar />
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader />
-        <List>
-          {data.map((item, index) => (
-            <Link to={item.route} key={index} style={{textDecoration:"none",color:"black"}}>
-              <ListItem disablePadding sx={{ display: "block" }}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
+      {token && (
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader />
+          <List>
+            {data.map((item, index) => (
+              <Link
+                to={item.route}
+                key={index}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <ListItem disablePadding sx={{ display: "block" }}>
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
                     }}
                   >
-                    {item.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.title}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            </Link>
-          ))}
-        </List>
-      </Drawer>
-      <Box  sx={{ flexGrow: 1, p: 3 }}>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.title}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+        </Drawer>
+      )}
+      <Box sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Outlet />
       </Box>

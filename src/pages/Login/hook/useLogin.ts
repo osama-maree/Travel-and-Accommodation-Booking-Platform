@@ -20,7 +20,6 @@ const useLogin = () => {
       dispatch(
         loginSuccess({ token: data.authentication, userType: data.userType })
       );
-      localStorage.setItem("access-token", data.authentication);
       showSnackbar({ severity: "success", message: "success login" });
     },
     onError: (error: AxiosBaseError) => {

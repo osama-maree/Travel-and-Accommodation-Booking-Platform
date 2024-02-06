@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import useGetRoom from "./hooks/useGetRoom";
-import Loader from "../../../../../../container/Loader";
+
 import DownloadDoneIcon from "@mui/icons-material/DownloadDone";
 import CloseIcon from "@mui/icons-material/Close";
 import { Button, Rating } from "@mui/material";
@@ -24,10 +24,10 @@ interface props {
   handleOpen: (id: number) => void;
 }
 const RoomGrid: React.FC<props> = ({ id, name, starRating, handleOpen }) => {
-  const { data, isLoading } = useGetRoom(id);
+  const { data } = useGetRoom(id);
   const [open, setOpen] = React.useState(false);
   const { mutate } = useDeleteRoom();
-  if (isLoading) return <Loader />;
+
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>

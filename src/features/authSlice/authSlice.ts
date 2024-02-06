@@ -17,7 +17,6 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     loginSuccess: (state: initialStateType, action: actionType) => {
-      console.log(action);
       state.token = action.payload.token;
       state.userType = action.payload.userType;
     },

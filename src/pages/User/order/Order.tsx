@@ -4,22 +4,21 @@ import {
   Button,
   Container,
   Divider,
-  List,
   Typography,
 } from "@mui/material";
 import React from "react";
-import ProductListItem from "./component/ProductListItem";
 import { useAppSelector } from "../../../store";
 import Modal from "./component/Modal";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../../features/cartSlice/cartSlice";
 import useStyles from "./styles";
+import RoomList from "./component/ProductListItem/RoomList";
 
 const Order = () => {
   const [isOpen, setOpen] = React.useState(false);
   const { rooms } = useAppSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const classes=useStyles()
+  const classes = useStyles();
   const handleOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
   const handleRemove = (roomId: number) => {
@@ -32,37 +31,17 @@ const Order = () => {
 
   return (
     <Container>
-      <Box
-        className={classes.box}
-        my={3}
-      >
+      <Box className={classes.box} my={3}>
         <Typography variant="h4" color="textSecondary" gutterBottom>
           Orders Details
         </Typography>
-        <Button
-         className={classes.price}
-        >
-          Total Price: ${totalAmount}
-        </Button>
+        <Button className={classes.price}>Total Price: ${totalAmount}</Button>
       </Box>
       <Divider />
       {!!rooms.length ? (
-        <List
-
-        >
-          {rooms.map((room) => (
-            <ProductListItem
-              room={room}
-              key={room.roomId}
-              handleRemove={handleRemove}
-            />
-          ))}
-        </List>
+        <RoomList handleRemove={handleRemove} />
       ) : (
-        <Alert
-          severity="error"
-       className={classes.alert}
-        >
+        <Alert severity="error" className={classes.alert}>
           Please Add Item To Your Cart!&#128516;
         </Alert>
       )}

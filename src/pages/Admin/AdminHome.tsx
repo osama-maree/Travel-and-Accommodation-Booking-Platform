@@ -5,7 +5,6 @@ import CityGrid from "./component/CityGrid";
 const AdminHome = () => {
   return (
     <>
-
       <SearchCity />
       <CityGrid />
     </>

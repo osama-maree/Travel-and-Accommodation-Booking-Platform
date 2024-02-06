@@ -1,4 +1,11 @@
-import { IconButton, ImageListItem, Box, Toolbar, Badge } from "@mui/material";
+import {
+  IconButton,
+  ImageListItem,
+  Box,
+  Toolbar,
+  Badge,
+  Tooltip,
+} from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -14,7 +21,7 @@ import { useNavigate } from "react-router-dom";
 
 const AppBarMUI: React.FC = () => {
   const { open } = useAppSelector((state) => state.open);
-  const { userType } = useAppSelector((state) => state.auth);
+  const { userType, token } = useAppSelector((state) => state.auth);
   const { rooms } = useAppSelector((state) => state.cart);
   const navigate = useNavigate();
   const classes = useStyles();
@@ -79,9 +86,13 @@ const AppBarMUI: React.FC = () => {
               </Badge>
             </IconButton>
           )}
-          <IconButton sx={{ color: "white" }} onClick={handleLogout}>
-            <ExitToAppIcon />
-          </IconButton>
+          {token && (
+            <Tooltip title="Logout">
+              <IconButton sx={{ color: "white" }} onClick={handleLogout}>
+                <ExitToAppIcon />
+              </IconButton>
+            </Tooltip>
+          )}
         </Toolbar>
       </AppBar>
     </>

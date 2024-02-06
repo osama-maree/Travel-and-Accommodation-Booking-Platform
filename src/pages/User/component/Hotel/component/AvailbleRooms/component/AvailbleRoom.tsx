@@ -66,27 +66,33 @@ const RoomCard: React.FC<roomTypeProps> = ({
             )}
           </Box>
         </Box>
-        <Box>
-          <Typography variant="body1" align="center" color="textSecondary">
-            Days
-          </Typography>
-          <Divider />
-          <Stack direction="row" spacing={1} mt={1} className={classes.stack}>
-            <IconButton
-              size="small"
-              disabled={quantity === 0}
-              onClick={() => handleQuantityDec(roomId)}
-            >
-              <RemoveCircleOutline color="info" />
-            </IconButton>
-            <Typography variant="body1" className={classes.typo}>
-              {quantity}
+        {availability && (
+          <Box>
+            <Typography variant="body1" align="center" color="textSecondary">
+              Days
             </Typography>
-            <IconButton size="small" onClick={() => handleQuantityInc(roomId)}>
-              <ControlPointIcon color="success" />
-            </IconButton>
-          </Stack>
-        </Box>
+            <Divider />
+
+            <Stack direction="row" spacing={1} mt={1} className={classes.stack}>
+              <IconButton
+                size="small"
+                disabled={quantity === 0}
+                onClick={() => handleQuantityDec(roomId)}
+              >
+                <RemoveCircleOutline color="info" />
+              </IconButton>
+              <Typography variant="body1" className={classes.typo}>
+                {quantity}
+              </Typography>
+              <IconButton
+                size="small"
+                onClick={() => handleQuantityInc(roomId)}
+              >
+                <ControlPointIcon color="success" />
+              </IconButton>
+            </Stack>
+          </Box>
+        )}
       </CardContent>
       <CardActions className={classes.cardAction}>
         <Button
@@ -95,7 +101,11 @@ const RoomCard: React.FC<roomTypeProps> = ({
           onClick={() => handleAddToCart(roomDetails)}
           disabled={quantity === 0}
         >
-          {quantity === 0 ? "Please enter a #days" : "Add to Cart"}
+          {quantity === 0
+            ? availability
+              ? "Please enter a #days"
+              : "Unavailable Room"
+            : "Add to Cart"}
         </Button>
       </CardActions>
     </Card>
