@@ -1,5 +1,5 @@
 export interface data {
-  icon: JSX.Element; // Assuming these are React components
+  icon: JSX.Element;
   title: string;
   route: string;
 }

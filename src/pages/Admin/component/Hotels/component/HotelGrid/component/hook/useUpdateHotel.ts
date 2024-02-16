@@ -19,13 +19,13 @@ const useUpdateHotel = () => {
   };
   const { mutate, isPending } = useMutation({
     mutationFn: EditHotel,
-    onSuccess: (data) => {
+    onSuccess: () => {
       showSnackbar({
         severity: "success",
         message: "Update  Hotel Success",
       });
     },
-    onError: (error) => {
+    onError: () => {
       showSnackbar({
         severity: "error",
         message: "Error Update Hotel",

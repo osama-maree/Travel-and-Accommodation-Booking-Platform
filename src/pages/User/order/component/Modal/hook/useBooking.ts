@@ -15,11 +15,11 @@ const useBooking = () => {
     isSuccess,
   } = useMutation({
     mutationFn: booking,
-    onSuccess: (data) => {
+    onSuccess: () => {
       dispatch(removeCart());
       showSnackbar({ severity: "success", message: "Booking Success" });
     },
-    onError: (error) => {
+    onError: () => {
       showSnackbar({
         severity: "error",
         message: "Error Booking",

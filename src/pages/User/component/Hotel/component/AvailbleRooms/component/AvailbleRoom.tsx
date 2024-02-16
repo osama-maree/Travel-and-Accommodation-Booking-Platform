@@ -10,7 +10,7 @@ import { Button, CardActions, Divider, IconButton } from "@mui/material";
 import { RemoveCircleOutline } from "@mui/icons-material";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import { roomType } from "../types";
-import useStyles from "../styles";
+import  "../styles.css";
 export interface roomTypeProps {
   roomDetails: roomType;
   handleQuantityInc: (index: number) => void;
@@ -35,7 +35,7 @@ const RoomCard: React.FC<roomTypeProps> = ({
     availability,
     quantity,
   } = roomDetails;
-  const classes = useStyles();
+
   return (
     <Card>
       <CardMedia
@@ -44,7 +44,7 @@ const RoomCard: React.FC<roomTypeProps> = ({
         image={roomPhotoUrl}
         alt={`Room ${roomNumber}`}
       />
-      <CardContent className={classes.cardContent}>
+      <CardContent className="roomCardContent">
         <Box>
           <Typography variant="h5" component="div">
             Room {roomNumber} - {roomType}
@@ -55,7 +55,7 @@ const RoomCard: React.FC<roomTypeProps> = ({
           <Typography color="textSecondary">
             Price: ${price} per night
           </Typography>
-          <Box className={classes.box}>
+          <Box className="roomBox">
             <Typography color="textSecondary" mr={1}>
               Availability:
             </Typography>
@@ -73,7 +73,7 @@ const RoomCard: React.FC<roomTypeProps> = ({
             </Typography>
             <Divider />
 
-            <Stack direction="row" spacing={1} mt={1} className={classes.stack}>
+            <Stack direction="row" spacing={1} mt={1} className="stack">
               <IconButton
                 size="small"
                 disabled={quantity === 0}
@@ -81,7 +81,7 @@ const RoomCard: React.FC<roomTypeProps> = ({
               >
                 <RemoveCircleOutline color="info" />
               </IconButton>
-              <Typography variant="body1" className={classes.typo}>
+              <Typography variant="body1" className="typo">
                 {quantity}
               </Typography>
               <IconButton
@@ -94,7 +94,7 @@ const RoomCard: React.FC<roomTypeProps> = ({
           </Box>
         )}
       </CardContent>
-      <CardActions className={classes.cardAction}>
+      <CardActions className="roomCardAction">
         <Button
           variant="contained"
           fullWidth

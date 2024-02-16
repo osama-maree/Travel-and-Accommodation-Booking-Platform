@@ -30,7 +30,6 @@ const ResponsiveDateRangePickers: React.FC<propsTypes> = ({
           onChange={handleDateChange}
         />
       </LocalizationProvider>
-
   );
 };
 export default ResponsiveDateRangePickers;

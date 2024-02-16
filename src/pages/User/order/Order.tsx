@@ -11,37 +11,51 @@ import { useAppSelector } from "../../../store";
 import Modal from "./component/Modal";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../../features/cartSlice/cartSlice";
-import useStyles from "./styles";
 import RoomList from "./component/ProductListItem/RoomList";
-
 const Order = () => {
   const [isOpen, setOpen] = React.useState(false);
   const { rooms } = useAppSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const classes = useStyles();
   const handleOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
   const handleRemove = (roomId: number) => {
     dispatch(removeFromCart({ roomId }));
   };
-  let totalAmount = rooms.reduce((accumulator, room) => {
+  const totalAmount = rooms.reduce((accumulator, room) => {
     const { quantity, price } = room;
     return accumulator + quantity * price;
   }, 0);
 
   return (
     <Container>
-      <Box className={classes.box} my={3}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+        my={3}
+      >
         <Typography variant="h4" color="textSecondary" gutterBottom>
           Orders Details
         </Typography>
-        <Button className={classes.price}>Total Price: ${totalAmount}</Button>
+        <Button sx={{ color: "#00acc1", border: "solid 1px #00acc1" }}>
+          Total Price: ${totalAmount}
+        </Button>
       </Box>
       <Divider />
-      {!!rooms.length ? (
+      {rooms.length ? (
         <RoomList handleRemove={handleRemove} />
       ) : (
-        <Alert severity="error" className={classes.alert}>
+        <Alert
+          severity="error"
+          sx={{
+            margin: "1rem 0px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           Please Add Item To Your Cart!&#128516;
         </Alert>
       )}

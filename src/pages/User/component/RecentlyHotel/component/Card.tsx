@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Response } from "../api/types";
 import { Box, Rating } from "@mui/material";
-import { format } from "date-fns";
+import dayjs from "dayjs";
 interface cardProps {
   hotel: Response;
 }
@@ -32,7 +32,7 @@ const ImgMediaCard: React.FC<cardProps> = ({ hotel }) => {
           <Rating name="read-only" value={hotel.starRating} readOnly />
 
           <Typography variant="body2" color="text.secondary">
-            visited In:{format(new Date(hotel.visitDate), "yyyy-MM-dd")}
+            visited In:{dayjs(hotel.visitDate).format("YYYY-MM-DD")}
           </Typography>
         </Box>
       </CardContent>

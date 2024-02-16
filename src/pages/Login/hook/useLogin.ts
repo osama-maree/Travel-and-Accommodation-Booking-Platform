@@ -3,26 +3,27 @@ import { useFormik } from "formik";
 import { validationSchema } from "../schema";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../api";
-import { AxiosBaseError } from "../../../types";
 import useSnackbar from "../../../hooks/useSnackbar";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../../../features/authSlice/authSlice";
 const useLogin = () => {
   const { showSnackbar } = useSnackbar();
-  const dispatch = useDispatch();
+   const dispatch = useDispatch();
+
   const {
     mutate: loginMutate,
     isPending,
-    isSuccess,
+    isSuccess
   } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
       dispatch(
         loginSuccess({ token: data.authentication, userType: data.userType })
       );
-      showSnackbar({ severity: "success", message: "success login" });
+    showSnackbar({ severity: "success", message: "success login" });
+    
     },
-    onError: (error: AxiosBaseError) => {
+    onError: () => {
       showSnackbar({
         severity: "error",
         message: "Error logging in",

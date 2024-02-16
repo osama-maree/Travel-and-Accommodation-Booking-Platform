@@ -1,11 +1,10 @@
-import React, { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Navigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { ProtectedRouteProps } from "./types";
 import BlockUI from "../container/BlockUI";
 import { useAppSelector } from "../store";
-
 const ProtectedRoute: FC<PropsWithChildren<ProtectedRouteProps>> = ({
   allowedRoles,
 }) => {

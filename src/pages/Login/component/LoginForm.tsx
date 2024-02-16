@@ -10,27 +10,35 @@ import {
 } from "@mui/material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import useLogin from "../hook/useLogin";
-import useStyles from "../styles";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../store";
+import '../styles.css'
 import { initialStateType } from "../../../features/authSlice/authSlice";
 import { UserRole } from "../../../constant/auth";
 const LoginForm: React.FC = () => {
   const { userType } = useAppSelector<initialStateType>((state) => state.auth);
   const { formik, isPending } = useLogin();
   const location = useLocation();
-  const classes = useStyles();
+
   return (
     <>
-      {userType ?(
+      {userType ? (
         <Navigate
           to={userType === UserRole.Admin ? "/manageCities" : "/"}
           replace
           state={{ from: location.pathname }}
         />
       ) : (
-        <Container component={"div"} maxWidth="xs" className={classes.root}>
-          <Avatar className={classes.avatar}>
+        <Container component={"div"} maxWidth="xs" className="login-root">
+          <Avatar
+            sx={{
+              bgcolor: "secondary.main",
+              backgroundColor: "primary.main",
+              position: "absolute",
+              top: `-20px`, // -padding - half of the avatar size
+              left: "calc(50% - 20px)",
+            }}
+          >
             <LockOpenIcon />
           </Avatar>
           <form onSubmit={formik.handleSubmit}>

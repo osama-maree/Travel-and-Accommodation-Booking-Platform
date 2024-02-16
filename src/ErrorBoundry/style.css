@@ -1,0 +1,31 @@
+.root {
+  padding: 20;
+}
+
+.productionError {
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  margin: 10;
+}
+
+.errorMessage {
+  font-size: 1.2rem;
+  overflow: auto;
+}
+.errorStack {
+  padding: 15px;
+  border: 2px solid lightgrey;
+  background-color: #fdfdfd;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  overflow: auto;
+}

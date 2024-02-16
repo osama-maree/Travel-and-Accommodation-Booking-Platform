@@ -11,13 +11,12 @@ import Typography from "@mui/material/Typography";
 import { Response } from "../api/types";
 import ExpandMore from "../../../../../container/ExpandMore";
 import { Box, Divider, Rating } from "@mui/material";
-import useStyles from "./styles";
+import "./styles.css"
 interface cardProps {
   hotel: Response;
 }
 const RecipeReviewCard: React.FC<cardProps> = ({ hotel }) => {
   const [expanded, setExpanded] = React.useState(false);
-  const classes = useStyles();
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -46,8 +45,8 @@ const RecipeReviewCard: React.FC<cardProps> = ({ hotel }) => {
           {hotel.description}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing className={classes.cardAction}>
-        <Box className={classes.box}>
+      <CardActions disableSpacing className="cardAction">
+        <Box className="box">
           <Typography variant="body2" color="text.secondary" ml={1}>
             Rating:{" "}
           </Typography>
@@ -57,7 +56,7 @@ const RecipeReviewCard: React.FC<cardProps> = ({ hotel }) => {
           City:{hotel.cityName}
         </Typography>
         <ExpandMore
-          expand={expanded}
+          expand={expanded.toString()}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
@@ -72,7 +71,7 @@ const RecipeReviewCard: React.FC<cardProps> = ({ hotel }) => {
         sx={{ padding: "0px", margin: "0px" }}
       >
         <Divider />
-        <CardContent className={classes.cardContent}>
+        <CardContent className="cardContent">
           <Typography variant="body2" color="text.secondary">
             Price Before Dis:{hotel.originalRoomPrice}$
           </Typography>

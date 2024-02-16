@@ -1,15 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
 import useSnackbar from "../../../../../../../hooks/useSnackbar";
-import { AxiosBaseError } from "../../../../../../../types";
 import { DeleteRoom } from "../api";
 const useDeleteRoom = () => {
   const { showSnackbar } = useSnackbar();
   const { mutate, isPending } = useMutation({
     mutationFn: DeleteRoom,
-    onSuccess: (data: any) => {
+    onSuccess: () => {
       showSnackbar({ severity: "success", message: "success delete Room" });
     },
-    onError: (error: AxiosBaseError) => {
+    onError: () => {
       showSnackbar({
         severity: "error",
         message: "Error Delete Room",

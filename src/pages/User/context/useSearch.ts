@@ -1,7 +1,5 @@
 import { useContext } from "react";
 import { SearchContext } from "./SearchContext";
-
-
 export default function useSearch() {
   const context = useContext(SearchContext);
   if (!context) {

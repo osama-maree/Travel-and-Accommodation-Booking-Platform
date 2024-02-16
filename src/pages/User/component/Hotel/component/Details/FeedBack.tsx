@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Typography, Rating } from "@mui/material";
-import useStyles from "./styles";
 interface CustomerFeedbackProps {
   customerName: string;
   rating: number;
@@ -11,21 +10,19 @@ const CustomerFeedback: React.FC<CustomerFeedbackProps> = ({
   rating,
   description,
 }) => {
-  const classes=useStyles()
   return (
     <Box
-    mt={1}
-     className={classes.box}
+      mt={1}
+      sx={{ padding: "10px", borderRadius: "5px", border: "1px solid #eee" }}
     >
       <Typography variant="body1" gutterBottom>
         Customer: {customerName}
       </Typography>
-      <Rating name="customer-rating" value={rating}  readOnly />
-     
-        <Typography variant="body2" color="textSecondary">
-          {description}
-        </Typography>
+      <Rating name="customer-rating" value={rating} readOnly />
 
+      <Typography variant="body2" color="textSecondary">
+        {description}
+      </Typography>
     </Box>
   );
 };

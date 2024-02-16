@@ -15,7 +15,6 @@ import { handleToggle } from "../../features/openSlice/openSlice";
 import { useDispatch } from "react-redux";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { logOut } from "../../features/authSlice/authSlice";
-import useStyles from "./styles";
 import { UserRole } from "../../constant/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +23,6 @@ const AppBarMUI: React.FC = () => {
   const { userType, token } = useAppSelector((state) => state.auth);
   const { rooms } = useAppSelector((state) => state.cart);
   const navigate = useNavigate();
-  const classes = useStyles();
   const dispatch = useDispatch();
   const handleToggleDrawer = () => {
     dispatch(handleToggle({ open: !open }));
@@ -66,7 +64,7 @@ const AppBarMUI: React.FC = () => {
                   alt="logo"
                 />
               </ImageListItem>
-              <ImageListItem className={classes.imgItem}>
+              <ImageListItem sx={{ maxHeight: "70px", maxWidth: "300px" }}>
                 <img
                   src="/assets/logo-text.png"
                   style={{

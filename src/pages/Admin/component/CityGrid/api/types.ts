@@ -3,7 +3,7 @@ import { BaseResponse } from "../../../../../types";
 export interface Response extends BaseResponse {
   id: number;
   name: string;
-  description:String;
+  description:string;
 }
 export interface hotelResponse extends BaseResponse {
   id: number;

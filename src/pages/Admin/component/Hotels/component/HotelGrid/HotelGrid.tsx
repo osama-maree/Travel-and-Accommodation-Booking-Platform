@@ -22,7 +22,7 @@ export default function HotelGrid() {
   };
 
   const handleOpen = (hotel: hotel) => {
-    setOpen((prev: ModalType) => {
+    setOpen(() => {
       return { hotel, type: types.EDIT, open: true };
     });
   };

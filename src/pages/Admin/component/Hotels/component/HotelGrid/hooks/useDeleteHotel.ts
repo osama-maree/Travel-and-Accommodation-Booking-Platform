@@ -8,7 +8,7 @@ const useDeleteHotel = () => {
   const { showSnackbar } = useSnackbar();
   const { mutate, isPending } = useMutation({
     mutationFn: DeleteHotel,
-    onSuccess: (data: any) => {
+    onSuccess: () => {
       showSnackbar({ severity: "success", message: "success delete hotel" });
     },
     onError: (error: AxiosBaseError) => {

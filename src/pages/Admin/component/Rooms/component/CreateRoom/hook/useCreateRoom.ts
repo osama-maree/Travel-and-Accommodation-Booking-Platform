@@ -8,10 +8,10 @@ const useCreateCity = (id:number) => {
   const { showSnackbar } = useSnackbar();
   const { mutate, isPending } = useMutation({
     mutationFn: createRoom,
-    onSuccess: (data) => {
+    onSuccess: () => {
       showSnackbar({ severity: "success", message: "Create New Room Success" });
     },
-    onError: (error) => {
+    onError: () => {
       showSnackbar({
         severity: "error",
         message: "Error Create Room",

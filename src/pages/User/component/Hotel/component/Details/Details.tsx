@@ -4,8 +4,6 @@ import { Box, Typography, Paper, Rating, Divider } from "@mui/material";
 import CustomerFeedback from "./FeedBack";
 import useGetGuestReviews from "./hooks/useGetReviews";
 import Loader from "../../../../../../container/Loader";
-import useStyles from "./styles";
-
 interface HotelInfoProps {
   name: string;
   starRating: number;
@@ -22,9 +20,16 @@ const HotelInfo: React.FC<HotelInfoProps> = ({
   id,
 }) => {
   const { data } = useGetGuestReviews(id);
-  const classes=useStyles()
   return (
-    <Paper elevation={3} className={classes.root}>
+    <Paper
+      elevation={3}
+      sx={{
+        padding: "20px",
+        height: "609px",
+        overflow: "scroll",
+        overflowX: "hidden",
+      }}
+    >
       <Typography variant="h6" gutterBottom>
         {name}
       </Typography>
@@ -44,7 +49,7 @@ const HotelInfo: React.FC<HotelInfoProps> = ({
       {data ? (
         data.map((item) => (
           <CustomerFeedback
-          key={item.reviewId}
+            key={item.reviewId}
             customerName={item.customerName}
             rating={item.rating}
             description={item.description}

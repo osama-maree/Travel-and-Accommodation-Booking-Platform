@@ -18,7 +18,7 @@ const useCreateHotel = () => {
         message: "Create New Hotel Success",
       });
     },
-    onError: (error) => {
+    onError: () => {
       showSnackbar({
         severity: "error",
         message: "Error Create Hotel",

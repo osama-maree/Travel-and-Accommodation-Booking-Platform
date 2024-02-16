@@ -1,20 +1,18 @@
 import React from "react";
 import LoginForm from "./component/LoginForm";
 import { Box, Grid } from "@mui/material";
-import useStyles from "./styles";
+import './styles.css'
 import Lottie from "lottie-react";
 import animationData from "../../lotties/login.json";
-const Login = () => {
-  const classes = useStyles();
-  
+const Login:React.FC = () => {
   return (
-    <Box className={classes.login}>
+    <Box className="login">
       <Grid container>
         <Grid
           item
           xs={12}
           md={6}
-          className={classes.grid}
+          className="grid"
           sx={{ clipPath: { md: "ellipse(95% 90% at 0% 50%)", xs: "none" } }}
         >
           <LoginForm />{" "}

@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useState } from "react";
+import React, { createContext, FC, ReactNode, useState } from "react";
 import { ModalType, Search, types } from "../types";
 import { Response } from "../component/CityGrid/api/types";
 import { hotel } from "../component/Hotels/component/HotelGrid/api/types";
@@ -28,22 +28,24 @@ export const AdminProvider: FC<SearchProviderProps> = ({ children }) => {
     open: false,
     type: types.CREATE,
   });
-  const [cities, setCities] = useState<Response[]>([]); 
+  const [cities, setCities] = useState<Response[]>([]);
   const [hotels, setHotels] = useState<hotel[]>([]);
   return (
-    <AdminContext.Provider
-      value={{
-        Params,
-        setParams,
-        open,
-        setOpen,
-        cities,
-        setCities,
-        hotels,
-        setHotels,
-      }}
-    >
-      {children}
-    </AdminContext.Provider>
+    <React.Fragment>
+      <AdminContext.Provider
+        value={{
+          Params,
+          setParams,
+          open,
+          setOpen,
+          cities,
+          setCities,
+          hotels,
+          setHotels,
+        }}
+      >
+        {children}
+      </AdminContext.Provider>
+    </React.Fragment>
   );
 };

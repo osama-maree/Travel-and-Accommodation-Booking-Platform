@@ -3,9 +3,6 @@ import {
   ListItem,
   ListItemText,
   IconButton,
-  ListItemSecondaryAction,
-  ImageListItem,
-  Typography,
   List,
   Box,
 } from "@mui/material";
@@ -27,32 +24,7 @@ const RoomList: React.FC<roomTypeProps> = ({ handleRemove }) => {
             bgcolor: "#eeee",
             borderRadius: "7px",
           }}
-        >
-          <ImageListItem
-            sx={{
-              width: "110px",
-              mr: "1rem",
-            }}
-          >
-            <img
-              src={room.roomPhotoUrl}
-              alt={"name"}
-              style={{ borderRadius: "100px !important" }}
-              loading="lazy"
-            />
-          </ImageListItem>
-          <ListItemText
-            primary={room.roomType}
-            secondary={
-              <Box>
-                Price: ${room.price} per night | #days: {room.quantity}
-                <Typography sx={{}}>
-                  Total Price: ${room.price * room.quantity}
-                </Typography>
-              </Box>
-            }
-          />
-          <ListItemSecondaryAction>
+          secondaryAction={
             <IconButton
               edge="end"
               aria-label="delete"
@@ -60,7 +32,30 @@ const RoomList: React.FC<roomTypeProps> = ({ handleRemove }) => {
             >
               <DeleteIcon color="error" />
             </IconButton>
-          </ListItemSecondaryAction>
+          }
+        >
+          <Box
+            sx={{
+              maxWidth: "110px",
+              mr: "1rem",
+            }}
+          >
+            <img
+              src={room.roomPhotoUrl}
+              alt={"name"}
+              style={{ maxWidth: "100%" }}
+              loading="lazy"
+            />
+          </Box>
+          <ListItemText
+            primary={room.roomType}
+            secondary={
+              <>
+                Price: ${room.price} per night | #days: {room.quantity} <br />
+                Total Price: ${room.price * room.quantity}
+              </>
+            }
+          />
         </ListItem>
       ))}
     </List>

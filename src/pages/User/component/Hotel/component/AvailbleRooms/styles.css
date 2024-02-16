@@ -1,0 +1,36 @@
+
+  .room-root {
+    height: 626px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  .roomCardContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .roomBox{
+    display: flex;
+    align-items: center;
+    margin-bottom:1rem ;
+  }
+  .stack {
+    background-color: white;
+    color: #e1bee7;
+    border-radius: 10px;
+    border: 1px solid #eeee;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .typo {
+    display: flex;
+    align-items: center;
+  }
+  .roomCardAction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    padding-top: 0px;
+  }

@@ -1,4 +1,4 @@
-import React, { FC, lazy, Suspense } from "react";
+import { FC, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectRoute";
 import { UserRole } from "../constant/auth";
@@ -25,6 +25,7 @@ const AppRoutes: FC = () => {
   const { User, Admin } = UserRole;
   return (
     <Suspense fallback={<BlockUI isBlocked={true} />}>
+      
       <Routes>
         <Route path="login" element={<Login />} />
         <Route element={<AppLayout />}>

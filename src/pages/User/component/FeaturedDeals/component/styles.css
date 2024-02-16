@@ -1,0 +1,17 @@
+.cardAction {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.box {
+  display: flex;
+  align-items: center;
+}
+.cardContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0px;
+  padding: 0px;
+  padding-top: 1rem;
+}

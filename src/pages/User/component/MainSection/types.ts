@@ -1,6 +1,6 @@
 import { dataTypes } from "../../types";
 
-interface amenType { id: number; name: string; description: string };
+interface amenType { id: number; name: string; description: string }
 
 export interface propsType {
   amenities: amenType[];

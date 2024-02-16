@@ -6,7 +6,7 @@ import { getHotel } from "../api";
 const useGetHotel= (id:string | undefined) => {
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["getHotel", id],
+    queryKey: ["getHotel",id],
     queryFn: () =>getHotel(id),
   });
 

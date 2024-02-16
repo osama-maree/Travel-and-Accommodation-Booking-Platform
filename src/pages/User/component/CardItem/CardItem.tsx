@@ -9,15 +9,17 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { propsType } from "../MainSection/types";
-import useStyles from "./styles";
+
 interface hotelProps {
   hotel: propsType;
   handleBooking: (hotelId:number) => void;
 }
 const CardItem: React.FC<hotelProps> = ({ hotel, handleBooking }) => {
-  const classes = useStyles();
+
   return (
-    <Card className={classes.card}>
+    <Card
+      sx={{ width: "100%", border: "1px solid #eeee", position: "relative" }}
+    >
       <CardActionArea component={Link} to={`/hotel/${hotel.hotelId}`}>
         <CardMedia
           component="img"
@@ -36,8 +38,8 @@ const CardItem: React.FC<hotelProps> = ({ hotel, handleBooking }) => {
       </CardActionArea>
       <Button
         variant="contained"
-        className={classes.btn}
-        onClick={()=>handleBooking(hotel.hotelId)}
+        sx={{ position: "absolute", bottom: "12px", right: "12px" }}
+        onClick={() => handleBooking(hotel.hotelId)}
       >
         Go For Booking
       </Button>

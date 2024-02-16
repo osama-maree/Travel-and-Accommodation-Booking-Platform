@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { createContext, useReducer, useCallback, ReactNode } from "react";
 import { AlertColor } from "@mui/material/Alert";
 import { SnackbarOrigin } from "@mui/material/Snackbar";
@@ -59,8 +59,7 @@ const useSnackbarContext = (initState: State) => {
     []
   );
 
-  const hideSnackbar = useCallback((reason?: string) => {
-    if (reason === "clickaway") return;
+  const hideSnackbar = useCallback(() => {
     dispatch({ type: REDUCER_ACTION_TYPE.HIDE_SNACKBAR });
   }, []);
 
@@ -86,9 +85,11 @@ const SnackbarProvider = ({ children }: ChildrenType): ReactElement => {
   const contextValues = useSnackbarContext(initialState);
 
   return (
-    <SnackbarContext.Provider value={contextValues}>
-      {children}
-    </SnackbarContext.Provider>
+    <React.Fragment>
+      <SnackbarContext.Provider value={contextValues}>
+        {children}
+      </SnackbarContext.Provider>
+    </React.Fragment>
   );
 };
 
